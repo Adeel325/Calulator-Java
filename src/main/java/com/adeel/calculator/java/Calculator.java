@@ -345,7 +345,11 @@ public class Calculator extends javax.swing.JFrame {
 
     private void mDotButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mDotButtonActionPerformed
         // TODO add your handling code here:
-        this.mResultTextField.setText(this.mResultTextField.getText() + ".");
+        if(!this.isDecimal){
+            this.mResultTextField.setText(this.mResultTextField.getText() + ".");
+            this.isDecimal = true;
+        }
+        
     }//GEN-LAST:event_mDotButtonActionPerformed
 
     private void mTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mTwoButtonActionPerformed
@@ -422,6 +426,9 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
     }
+    
+    //  Variablea
+    private boolean isDecimal = false;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton12;
