@@ -451,6 +451,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="+-"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mPlusMinusButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="mResultTextField">
       <Properties>

@@ -221,6 +221,11 @@ public class Calculator extends javax.swing.JFrame {
         mPlusMinusButton.setBackground(new java.awt.Color(255, 255, 255));
         mPlusMinusButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mPlusMinusButton.setText("+-");
+        mPlusMinusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mPlusMinusButtonActionPerformed(evt);
+            }
+        });
 
         mResultTextField.setEditable(false);
         mResultTextField.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -428,6 +433,21 @@ public class Calculator extends javax.swing.JFrame {
             this.mResultTextField.setText(builder.toString());
         }
     }//GEN-LAST:event_mBackButtonActionPerformed
+
+    private void mPlusMinusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mPlusMinusButtonActionPerformed
+        // TODO add your handling code here:
+        String value = this.mResultTextField.getText();
+        if(!value.contains("-")){
+            this.mResultTextField.setText("-" + value);
+        }
+        else{
+            try{
+                this.mResultTextField.setText(value.split("-")[1]);
+            }catch(IndexOutOfBoundsException e){
+                this.mResultTextField.setText("");
+            }
+        }
+    }//GEN-LAST:event_mPlusMinusButtonActionPerformed
 
     /**
      * @param args the command line arguments
