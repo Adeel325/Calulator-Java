@@ -75,10 +75,20 @@ public class Calculator extends javax.swing.JFrame {
         mClearButton.setBackground(new java.awt.Color(255, 255, 255));
         mClearButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mClearButton.setText("C");
+        mClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mClearButtonActionPerformed(evt);
+            }
+        });
 
         mBackButton.setBackground(new java.awt.Color(255, 255, 255));
         mBackButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mBackButton.setText("<--");
+        mBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mBackButtonActionPerformed(evt);
+            }
+        });
 
         mDivisionButton.setBackground(new java.awt.Color(255, 255, 255));
         mDivisionButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -87,6 +97,11 @@ public class Calculator extends javax.swing.JFrame {
         mCancelEntryButton.setBackground(new java.awt.Color(255, 255, 255));
         mCancelEntryButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mCancelEntryButton.setText("CE");
+        mCancelEntryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mCancelEntryButtonActionPerformed(evt);
+            }
+        });
 
         mEightButton.setBackground(new java.awt.Color(255, 255, 255));
         mEightButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -391,6 +406,28 @@ public class Calculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.mResultTextField.setText(this.mResultTextField.getText() + "9");
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void mClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mClearButtonActionPerformed
+        // TODO add your handling code here:
+        mResultTextField.setText("");
+        mTempLabel.setText("");
+    }//GEN-LAST:event_mClearButtonActionPerformed
+
+    private void mCancelEntryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCancelEntryButtonActionPerformed
+        // TODO add your handling code here:
+        mResultTextField.setText("");
+    }//GEN-LAST:event_mCancelEntryButtonActionPerformed
+
+    private void mBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mBackButtonActionPerformed
+        // TODO add your handling code here:
+        String value = mResultTextField.getText();
+        int length = value.length();
+        if(length > 0){
+            StringBuilder builder = new StringBuilder(value);
+            builder.deleteCharAt(length - 1);
+            this.mResultTextField.setText(builder.toString());
+        }
+    }//GEN-LAST:event_mBackButtonActionPerformed
 
     /**
      * @param args the command line arguments
