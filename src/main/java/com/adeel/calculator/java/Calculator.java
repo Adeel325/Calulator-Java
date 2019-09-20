@@ -416,11 +416,13 @@ public class Calculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         mResultTextField.setText("");
         mTempLabel.setText("");
+        isDecimal = false;
     }//GEN-LAST:event_mClearButtonActionPerformed
 
     private void mCancelEntryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCancelEntryButtonActionPerformed
         // TODO add your handling code here:
         mResultTextField.setText("");
+        isDecimal = false;
     }//GEN-LAST:event_mCancelEntryButtonActionPerformed
 
     private void mBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mBackButtonActionPerformed
@@ -428,9 +430,18 @@ public class Calculator extends javax.swing.JFrame {
         String value = mResultTextField.getText();
         int length = value.length();
         if(length > 0){
-            StringBuilder builder = new StringBuilder(value);
-            builder.deleteCharAt(length - 1);
-            this.mResultTextField.setText(builder.toString());
+            char temp = value.charAt(length-1);
+            if(Character.toString(temp).matches(".")){
+                StringBuilder builder = new StringBuilder(value);
+                builder.deleteCharAt(length - 1);
+                this.mResultTextField.setText(builder.toString());
+                isDecimal = false;
+            }
+            else{
+                StringBuilder builder = new StringBuilder(value);
+                builder.deleteCharAt(length - 1);
+                this.mResultTextField.setText(builder.toString());
+            }
         }
     }//GEN-LAST:event_mBackButtonActionPerformed
 
