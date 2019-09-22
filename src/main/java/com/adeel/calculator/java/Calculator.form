@@ -228,6 +228,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="/"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mDivisionButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mCancelEntryButton">
       <Properties>
@@ -281,6 +284,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="*"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mMultiplicationButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mSevenButton">
       <Properties>
@@ -334,6 +340,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="-"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mSubtractionButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mFourButton">
       <Properties>
@@ -387,6 +396,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="+"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mAdditionButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mOneButton">
       <Properties>
@@ -440,6 +452,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="="/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mEqualButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mPlusMinusButton">
       <Properties>

@@ -9,7 +9,7 @@ package com.adeel.calculator.java;
  *
  * @author User
  */
-public class Calculator extends javax.swing.JFrame {
+public class Calculator extends javax.swing.JFrame implements Calculations{
 
     /**
      * Creates new form Calculator
@@ -93,6 +93,11 @@ public class Calculator extends javax.swing.JFrame {
         mDivisionButton.setBackground(new java.awt.Color(255, 255, 255));
         mDivisionButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mDivisionButton.setText("/");
+        mDivisionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mDivisionButtonActionPerformed(evt);
+            }
+        });
 
         mCancelEntryButton.setBackground(new java.awt.Color(255, 255, 255));
         mCancelEntryButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -124,6 +129,11 @@ public class Calculator extends javax.swing.JFrame {
         mMultiplicationButton.setBackground(new java.awt.Color(255, 255, 255));
         mMultiplicationButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mMultiplicationButton.setText("*");
+        mMultiplicationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mMultiplicationButtonActionPerformed(evt);
+            }
+        });
 
         mSevenButton.setBackground(new java.awt.Color(255, 255, 255));
         mSevenButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -155,6 +165,11 @@ public class Calculator extends javax.swing.JFrame {
         mSubtractionButton.setBackground(new java.awt.Color(255, 255, 255));
         mSubtractionButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mSubtractionButton.setText("-");
+        mSubtractionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mSubtractionButtonActionPerformed(evt);
+            }
+        });
 
         mFourButton.setBackground(new java.awt.Color(255, 255, 255));
         mFourButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -186,6 +201,11 @@ public class Calculator extends javax.swing.JFrame {
         mAdditionButton.setBackground(new java.awt.Color(255, 255, 255));
         mAdditionButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mAdditionButton.setText("+");
+        mAdditionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mAdditionButtonActionPerformed(evt);
+            }
+        });
 
         mOneButton.setBackground(new java.awt.Color(255, 255, 255));
         mOneButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -217,6 +237,11 @@ public class Calculator extends javax.swing.JFrame {
         mEqualButton.setBackground(new java.awt.Color(255, 255, 255));
         mEqualButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mEqualButton.setText("=");
+        mEqualButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mEqualButtonActionPerformed(evt);
+            }
+        });
 
         mPlusMinusButton.setBackground(new java.awt.Color(255, 255, 255));
         mPlusMinusButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -460,6 +485,86 @@ public class Calculator extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mPlusMinusButtonActionPerformed
 
+    private void mMultiplicationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mMultiplicationButtonActionPerformed
+        // TODO add your handling code here:
+        this.sign = "*";
+        if(this.mResultTextField.getText().length() > 0)
+            storeResult(this.mResultTextField.getText());
+    }//GEN-LAST:event_mMultiplicationButtonActionPerformed
+
+    private void mSubtractionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSubtractionButtonActionPerformed
+        // TODO add your handling code here:
+        sign = "-";
+        if(this.mResultTextField.getText().length() > 0)
+            storeResult(this.mResultTextField.getText());
+    }//GEN-LAST:event_mSubtractionButtonActionPerformed
+
+    private void mAdditionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAdditionButtonActionPerformed
+        // TODO add your handling code here:
+        sign = "+";
+        if(this.mResultTextField.getText().length() > 0)
+            storeResult(this.mResultTextField.getText());
+    }//GEN-LAST:event_mAdditionButtonActionPerformed
+
+    private void mDivisionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mDivisionButtonActionPerformed
+        // TODO add your handling code here:
+        sign = "/";
+        if(this.mResultTextField.getText().length() > 0)
+            storeResult(this.mResultTextField.getText());
+    }//GEN-LAST:event_mDivisionButtonActionPerformed
+
+    private void mEqualButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEqualButtonActionPerformed
+        // TODO add your handling code here:
+        if(this.sign == "+"){
+            double b = Double.parseDouble(this.mResultTextField.getText());
+            this.add(this.toBeCalculated, b);
+        }
+        else if(this.sign == "-"){
+            double b = Double.parseDouble(this.mResultTextField.getText());
+            this.subtract(this.toBeCalculated, b);
+        }
+        else if(this.sign == "*"){
+            double b = Double.parseDouble(this.mResultTextField.getText());
+            this.multiply(this.toBeCalculated, b);
+        }
+        else if(this.sign == "/"){
+            double b = Double.parseDouble(this.mResultTextField.getText());
+            this.devide(this.toBeCalculated, b);
+        }
+    }//GEN-LAST:event_mEqualButtonActionPerformed
+
+    // function implementations
+    @Override
+    public void add(double a, double b){
+        this.setResult(a+b);
+    }
+    
+    @Override
+    public void subtract(double a, double b){
+        this.setResult(a-b);
+    }
+    
+    @Override
+    public void multiply(double a, double b){
+        this.setResult(a*b);
+    }
+    
+    @Override
+    public void devide(double a, double b){
+        this.setResult(a/b);
+    }
+    
+    public void setResult(double result){
+        this.mResultTextField.setText(Double.toString(result));
+        this.mTempLabel.setText("");
+    }
+    public void storeResult(String result){
+        this.toBeCalculated = Double.parseDouble(result);
+        this.mTempLabel.setText(Double.toString(this.toBeCalculated) + " " + sign);
+        this.mResultTextField.setText("");
+    }
+    
+        
     /**
      * @param args the command line arguments
      */
@@ -497,7 +602,8 @@ public class Calculator extends javax.swing.JFrame {
     
     //  Variablea
     private boolean isDecimal = false;
-
+    private String sign;
+    private double toBeCalculated;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton12;
     private javax.swing.JButton mAdditionButton;
