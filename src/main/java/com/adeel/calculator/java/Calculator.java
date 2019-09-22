@@ -488,48 +488,87 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
     private void mMultiplicationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mMultiplicationButtonActionPerformed
         // TODO add your handling code here:
         this.sign = "*";
-        if(this.mResultTextField.getText().length() > 0)
+        this.isDecimal = false;
+        try{
+            if(this.mResultTextField.getText().length() > 0)
             storeResult(this.mResultTextField.getText());
+        }
+        catch(NumberFormatException e){
+            
+        }
     }//GEN-LAST:event_mMultiplicationButtonActionPerformed
 
     private void mSubtractionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSubtractionButtonActionPerformed
         // TODO add your handling code here:
         sign = "-";
-        if(this.mResultTextField.getText().length() > 0)
+        this.isDecimal = false;
+        try{
+        }
+        catch(NumberFormatException e){
+            if(this.mResultTextField.getText().length() > 0)
             storeResult(this.mResultTextField.getText());
+        }
     }//GEN-LAST:event_mSubtractionButtonActionPerformed
 
     private void mAdditionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAdditionButtonActionPerformed
         // TODO add your handling code here:
         sign = "+";
-        if(this.mResultTextField.getText().length() > 0)
+        this.isDecimal = false;
+        try{
+            if(this.mResultTextField.getText().length() > 0)
             storeResult(this.mResultTextField.getText());
+        }
+        catch(NumberFormatException e){
+        
+        }
+        
     }//GEN-LAST:event_mAdditionButtonActionPerformed
 
     private void mDivisionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mDivisionButtonActionPerformed
         // TODO add your handling code here:
         sign = "/";
-        if(this.mResultTextField.getText().length() > 0)
+        this.isDecimal = false;
+        try{
+            if(this.mResultTextField.getText().length() > 0)
             storeResult(this.mResultTextField.getText());
+        }
+        catch(NumberFormatException e){
+        
+        }
     }//GEN-LAST:event_mDivisionButtonActionPerformed
 
     private void mEqualButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEqualButtonActionPerformed
         // TODO add your handling code here:
-        if(this.sign == "+"){
-            double b = Double.parseDouble(this.mResultTextField.getText());
-            this.add(this.toBeCalculated, b);
+        try{
+            if(this.mResultTextField.getText().length() > 0){
+                if(this.sign == "+"){
+                    double b = Double.parseDouble(this.mResultTextField.getText());
+                    this.add(this.toBeCalculated, b);
+                    this.sign = "";
+                    this.isDecimal = true;
+                }
+                else if(this.sign == "-"){
+                    double b = Double.parseDouble(this.mResultTextField.getText());
+                    this.subtract(this.toBeCalculated, b);
+                    this.sign = "";
+                    this.isDecimal = true;
+                }
+                else if(this.sign == "*"){
+                    double b = Double.parseDouble(this.mResultTextField.getText());
+                    this.multiply(this.toBeCalculated, b);
+                    this.sign = "";
+                    this.isDecimal = true;
+                }
+                else if(this.sign == "/"){
+                    double b = Double.parseDouble(this.mResultTextField.getText());
+                    this.devide(this.toBeCalculated, b);
+                    this.sign = "";
+                    this.isDecimal = true;
+                }
+            }
         }
-        else if(this.sign == "-"){
-            double b = Double.parseDouble(this.mResultTextField.getText());
-            this.subtract(this.toBeCalculated, b);
-        }
-        else if(this.sign == "*"){
-            double b = Double.parseDouble(this.mResultTextField.getText());
-            this.multiply(this.toBeCalculated, b);
-        }
-        else if(this.sign == "/"){
-            double b = Double.parseDouble(this.mResultTextField.getText());
-            this.devide(this.toBeCalculated, b);
+        catch(NumberFormatException e){
+            
         }
     }//GEN-LAST:event_mEqualButtonActionPerformed
 
