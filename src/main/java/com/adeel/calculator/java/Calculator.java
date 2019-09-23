@@ -67,6 +67,11 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
         mOneByXButton.setBackground(new java.awt.Color(255, 255, 255));
         mOneByXButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mOneByXButton.setText("1/x");
+        mOneByXButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mOneByXButtonActionPerformed(evt);
+            }
+        });
 
         mPercentageButton.setBackground(new java.awt.Color(255, 255, 255));
         mPercentageButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -509,7 +514,7 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
             storeResult(this.mResultTextField.getText());
         }
     }//GEN-LAST:event_mSubtractionButtonActionPerformed
-
+    
     private void mAdditionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAdditionButtonActionPerformed
         // TODO add your handling code here:
         sign = "+";
@@ -572,6 +577,17 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
         }
     }//GEN-LAST:event_mEqualButtonActionPerformed
 
+    private void mOneByXButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mOneByXButtonActionPerformed
+        // TODO add your handling code here:
+        if(this.mResultTextField.getText().length() > 0){
+            this.toBeCalculated = Double.parseDouble(this.mResultTextField.getText());
+            mOneByX(this.toBeCalculated);
+        }
+    }//GEN-LAST:event_mOneByXButtonActionPerformed
+
+    private void mOneByX(double a){
+        this.mResultTextField.setText(Double.toString(1/a));
+    }
     // function implementations
     @Override
     public void add(double a, double b){
