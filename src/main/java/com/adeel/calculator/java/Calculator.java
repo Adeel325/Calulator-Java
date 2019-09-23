@@ -595,25 +595,37 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
 
     private void mOneByXButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mOneByXButtonActionPerformed
         // TODO add your handling code here:
-        if(this.mResultTextField.getText().length() > 0){
-            this.toBeCalculated = Double.parseDouble(this.mResultTextField.getText());
-            mOneByX(this.toBeCalculated);
+        try{
+            if(this.mResultTextField.getText().length() > 0){
+                this.toBeCalculated = Double.parseDouble(this.mResultTextField.getText());
+                mOneByX(this.toBeCalculated);
+            }
+        }
+        catch(NumberFormatException e){
         }
     }//GEN-LAST:event_mOneByXButtonActionPerformed
 
     private void mSquareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSquareButtonActionPerformed
         // TODO add your handling code here:
-        if(this.mResultTextField.getText().length() > 0){
-            this.toBeCalculated = Double.parseDouble(this.mResultTextField.getText());
-            mSquare(this.toBeCalculated);
+        try{
+            if(this.mResultTextField.getText().length() > 0){
+                this.toBeCalculated = Double.parseDouble(this.mResultTextField.getText());
+                mSquare(this.toBeCalculated);
+            }
+        }
+        catch(NumberFormatException e){
         }
     }//GEN-LAST:event_mSquareButtonActionPerformed
 
     private void mSqrtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSqrtButtonActionPerformed
         // TODO add your handling code here:
-        if(this.mResultTextField.getText().length() > 0){
-            this.toBeCalculated = Double.parseDouble(this.mResultTextField.getText());
-            mSquareRoot(this.toBeCalculated);
+        try{
+            if(this.mResultTextField.getText().length() > 0){
+                this.toBeCalculated = Double.parseDouble(this.mResultTextField.getText());
+                mSquareRoot(this.toBeCalculated);
+            }
+        }
+        catch(NumberFormatException e){
         }
     }//GEN-LAST:event_mSqrtButtonActionPerformed
 
