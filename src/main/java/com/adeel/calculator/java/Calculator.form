@@ -167,6 +167,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="x^2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mSquareButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mOneByXButton">
       <Properties>
