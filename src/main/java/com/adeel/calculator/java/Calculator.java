@@ -59,6 +59,11 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
         mSqrtButton.setBackground(new java.awt.Color(255, 255, 255));
         mSqrtButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mSqrtButton.setText("sqrt");
+        mSqrtButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mSqrtButtonActionPerformed(evt);
+            }
+        });
 
         mSquareButton.setBackground(new java.awt.Color(255, 255, 255));
         mSquareButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -598,11 +603,22 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
         }
     }//GEN-LAST:event_mSquareButtonActionPerformed
 
+    private void mSqrtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSqrtButtonActionPerformed
+        // TODO add your handling code here:
+        if(this.mResultTextField.getText().length() > 0){
+            this.toBeCalculated = Double.parseDouble(this.mResultTextField.getText());
+            mSquareRoot(this.toBeCalculated);
+        }
+    }//GEN-LAST:event_mSqrtButtonActionPerformed
+
     private void mOneByX(double a){
         this.mResultTextField.setText(Double.toString(1/a));
     }
     private void mSquare(double a){
         this.mResultTextField.setText(Double.toString(a*=a));
+    }
+    private void mSquareRoot(double a){
+        this.mResultTextField.setText(Double.toString(Math.sqrt(a)));
     }
     // function implementations
     @Override
