@@ -86,6 +86,11 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
         mPercentageButton.setBackground(new java.awt.Color(255, 255, 255));
         mPercentageButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         mPercentageButton.setText("%");
+        mPercentageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mPercentageButtonActionPerformed(evt);
+            }
+        });
 
         mClearButton.setBackground(new java.awt.Color(255, 255, 255));
         mClearButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -518,10 +523,11 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
         sign = "-";
         this.isDecimal = false;
         try{
-        }
-        catch(NumberFormatException e){
             if(this.mResultTextField.getText().length() > 0)
             storeResult(this.mResultTextField.getText());
+        }
+        catch(NumberFormatException e){
+            
         }
     }//GEN-LAST:event_mSubtractionButtonActionPerformed
     
@@ -611,6 +617,29 @@ public class Calculator extends javax.swing.JFrame implements Calculations{
         }
     }//GEN-LAST:event_mSqrtButtonActionPerformed
 
+    private void mPercentageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mPercentageButtonActionPerformed
+        // TODO add your handling code here:
+        if(this.mTempLabel.getText().length() > 0 && this.mResultTextField.getText().length() > 0){
+            this.toBeCalculated = Double.parseDouble(this.mResultTextField.getText());
+            mPercentage(Double.parseDouble(this.mTempLabel.getText().split(" ")[0]), this.toBeCalculated);
+        }
+        
+    }//GEN-LAST:event_mPercentageButtonActionPerformed
+
+    private void mPercentage(double a, double b){
+        if(this.sign == "+"){
+            add(((a*b)/100), a);
+        }
+        else if(this.sign == "-"){
+            subtract(a, ((a*b)/100));
+        }
+        else if(this.sign == "*"){
+            multiply(((a*b)/100), a);
+        }
+        else if(this.sign == "/"){
+            devide(a, ((a*b)/100));
+        }
+    }
     private void mOneByX(double a){
         this.mResultTextField.setText(Double.toString(1/a));
     }
